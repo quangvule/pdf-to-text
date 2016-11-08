@@ -14,7 +14,7 @@ class Pdf
 
     public function __construct($binPath = null)
     {
-        $this->binPath = $binPath ? : '/usr/bin/pdftotext';
+        $this->binPath = $binPath ? : 'pdftotext';
     }
 
     public function setPdf($pdf)
@@ -30,7 +30,7 @@ class Pdf
 
     public function text()
     {
-        $process = new Process("{$this->binPath} '{$this->pdf}' -");
+        $process = new Process("{$this->binPath} {$this->pdf} -");
         $process->run();
 
         if (!$process->isSuccessful()) {
